@@ -1,7 +1,7 @@
 .gitignore
 #(Harta)
 #!!!!!!!!DONT TDONT TOUCH MY TEXT (Only ADD)
-
+# Отличный .gitignore
 
 
 
@@ -123,6 +123,9 @@ dmypy.json
 
 # VSCODE IDE
 .vscode
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extensions.json
 
 #Pycharm IDE
 .idea
