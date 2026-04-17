@@ -100,6 +100,18 @@ def get_age(birth_date_str, fmt="%Y-%m-%d"):
         age -= 1
     return age
 
+def date_range(start_date, end_date):
+    """Генератор всех дат между start_date и end_date"""
+    current = datetime.strptime(start_date, "%Y-%m-%d")
+    end = datetime.strptime(end_date, "%Y-%m-%d")
+    while current <= end:
+        yield current.strftime("%Y-%m-%d")
+        current += timedelta(days=1)
+
+# Примеры использования
+print(list(date_range("2024-03-01", "2024-03-05")))
+# ['2024-03-01', '2024-03-02', '2024-03-03', '2024-03-04', '2024-03-05']
+
 🚀 Примеры использования:
 # Калькулятор дедлайнов
 deadline = "2024-12-31"
