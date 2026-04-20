@@ -74,9 +74,18 @@ print(f"До Нового года: {days_left} дней")
 
 💡 Готовые функции для копирования:
 def days_between(date1_str, date2_str, fmt="%Y-%m-%d"):
-    """Сколько дней между двумя датами"""
-    d1 = datetime.strptime(date1_str, fmt)
-    d2 = datetime.strptime(date2_str, fmt)
+    """Возвращает количество дней между двумя датами.
+    
+    :param date1_str: первая дата (строка)
+    :param date2_str: вторая дата (строка)
+    :param fmt: формат даты (по умолчанию YYYY-MM-DD)
+    """
+    try:
+        d1 = datetime.strptime(date1_str, fmt)
+        d2 = datetime.strptime(date2_str, fmt)
+    except ValueError as e:
+        raise ValueError(f"Ошибка формата даты: {e}") from None
+
     return abs((d2 - d1).days)
 
 def add_days_to_date(date_str, days, fmt="%Y-%m-%d"):
