@@ -75,7 +75,7 @@ print(f"До Нового года: {days_left} дней")
 💡 Готовые функции для копирования:
 def days_between(date1_str, date2_str, fmt="%Y-%m-%d"):
     """Возвращает количество дней между двумя датами.
-    
+
     :param date1_str: первая дата (строка)
     :param date2_str: вторая дата (строка)
     :param fmt: формат даты (по умолчанию YYYY-MM-DD)
@@ -88,36 +88,45 @@ def days_between(date1_str, date2_str, fmt="%Y-%m-%d"):
 
     return abs((d2 - d1).days)
 
+
 def add_days_to_date(date_str, days, fmt="%Y-%m-%d"):
-    """Добавить дни к дате"""
+    """Добавить дни к дате."""
     dt = datetime.strptime(date_str, fmt)
     new_dt = dt + timedelta(days=days)
     return new_dt.strftime(fmt)
+
 
 def is_weekend(date_str, fmt="%Y-%m-%d"):
     """Выходной ли день?"""
     dt = datetime.strptime(date_str, fmt)
     return dt.weekday() >= 5  # 5 = суббота, 6 = воскресенье
 
+
 def get_age(birth_date_str, fmt="%Y-%m-%d"):
-    """Вычислить возраст по дате рождения"""
+    """Вычислить возраст по дате рождения."""
     birth = datetime.strptime(birth_date_str, fmt)
     today = datetime.now()
+
     age = today.year - birth.year
+
     # Проверяем, был ли уже день рождения в этом году
     if (today.month, today.day) < (birth.month, birth.day):
         age -= 1
+
     return age
 
-def date_range(start_date, end_date):
-    """Генератор всех дат между start_date и end_date"""
-    current = datetime.strptime(start_date, "%Y-%m-%d")
-    end = datetime.strptime(end_date, "%Y-%m-%d")
+
+def date_range(start_date, end_date, fmt="%Y-%m-%d"):
+    """Генератор всех дат между start_date и end_date."""
+    current = datetime.strptime(start_date, fmt)
+    end = datetime.strptime(end_date, fmt)
+
     while current <= end:
-        yield current.strftime("%Y-%m-%d")
+        yield current.strftime(fmt)
         current += timedelta(days=1)
 
 # Примеры использования
+# Генератор
 print(list(date_range("2024-03-01", "2024-03-05")))
 # ['2024-03-01', '2024-03-02', '2024-03-03', '2024-03-04', '2024-03-05']
 
