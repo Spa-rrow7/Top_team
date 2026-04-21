@@ -111,6 +111,10 @@ task_date = "2024-03-20"
 reminder_date = add_days_to_date(task_date, -3)  # Напоминание за 3 дня
 print(f"Напоминание: {reminder_date}")
 
+task_date = "2024-03-25"
+reminder_date = add_days_to_date(task_date, -3)  # Напоминание за 3 дня
+print(f"Напоминание: {reminder_date}")
+
 # Проверка рабочего дня
 if not is_weekend("2024-03-16"):
     print("Рабочий день")
